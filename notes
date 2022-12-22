@@ -1,0 +1,94 @@
+# Orm - object-relational Mapping
+# It is a programming technique for converting data between incompatible type sysmtems using object-oriented programming languages.
+# The objects in memory are mapped to a relational database using Orm.
+# It is a method to interact with a database through query sets.
+
+
+# For loop is used to print every object one after the other
+
+# model.objects.all() - This is calling all the objects
+# model.objects.filter(name of the column =, <, > '') - Calling the rows containing the filter element in the column
+# model.objects.get(instance(usually id)) - To call a particular object
+# model.objects.all().order_by('models field') - Printing the objects in assending order of the field mentioned
+# model.objects.all().order_by('-models field') - Printing the objects in decendeing order of the field mentioned
+# import all the models before using aggregate function
+# from django.db.models import *
+# model.objects.aggregate(Max('models field'(integer field only)))
+# model.objects.aggregate(Min('models field'(integer field only)))
+# model.objects.aggregate(Sum('models field'(integer field only)))
+# model.objects.aggregate(Avg('models field'(integer field only)))
+
+# a = Student.objects.all()
+# ^ 
+# a is the variable we are assigning the query set to, queries must be assigned to a variable for saving or execution.
+# a = Student(name = 'Name', email= 'email@.somthing.com', city = 'City', marks = '100')
+# a.save()
+
+# After entering the details and assigning it to a variable, variable.save() is a must for saving and execution
+
+# For changing a value in an object it must be assigned to a variable, 
+# variable.(field in models) = 'New value'
+# variable.save() for saving
+# variable.delete() for delete
+
+# v = Student.objects.get(name = "old name")
+# v.name = 'new name'
+# v.save()
+# v.delete()
+
+# In a query set in the presence of a foreign key, if we need the class and then the key object, 
+# query - first comes the class and then the key, if it is the other way round first comes the key and then comes the class
+
+# ForeignKey
+
+# cricket = Sport(name = 'cricket')
+# football = Sport(name = 'football')
+# tt = Sport(name = 'tt')
+# cricket.save()
+# football.save()
+# tt.save()
+
+# r = Student(name = 'r', sport = 'cricket')
+# a = Student(name = 'a', sport = 'football')
+# k = Student(name = 'k', sport = 'tt')
+# r.save()
+# a.save()
+# k.save()
+
+# In ForeignKey we the student class directly to sport at the time of creation
+
+
+# Many to many fields-
+
+# For instance Sport and Student
+
+# r = Student(name = 'r')
+# a = Student(name = 'a')
+# k = Student(name = 'k')
+# r.save()
+# a.save()
+# k.save()
+
+# cricket = Sport(name = 'cricket')
+# football = Sport(name = 'football')
+# tt = Sport(name = 'tt')
+# cricket.save()
+# football.save()
+# tt.save()
+
+# To add in many to many fields
+
+# r.sport.add(cricket) -> sport here is the ManyToManyField name in models.py 
+# r.sport.add(tt)
+# a.sport.add(cricket)
+# k.sport.add(football)
+# a.sport.add(football)
+
+# To find the students in each sport 
+# Student.objects.filter(sport__name = 'cricket') -> sport here is the ManyToManyField name in models.py 
+
+# To find the sport played by students
+# Sport.objects.filter(student__name = 'r')
+
+# To create a sport and add student at the same Time
+# r.sport.creat(basketball)
