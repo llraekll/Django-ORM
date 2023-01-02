@@ -1,8 +1,8 @@
 from django.contrib import admin
-from app.models import Student, Sport, Company, Model
+from app.models import Customer, Product, Order , Tag
 
-admin.site.register(Sport)
-admin.site.register(Student)
-admin.site.register(Company)
-admin.site.register(Model)
+admin.site.register(Customer)
+admin.site.register(Product)
+admin.site.register(Tag)
+admin.site.register(Order)
 # Register your models here.
